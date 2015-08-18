@@ -21,19 +21,32 @@ These are big issue that will require a lot of careful analysis, so to begin wit
 
 - Have spatial patterns of nut tree expansion been similar in different parts of California
 
-
 ### Where to begin?
 
-The most prolific almond producing county in California is Kern County, so we will start there.
+To get stated, I just want to explore some available data. The most prolific almond producing county in California is Kern County, so I will start there. I'm going to combine two data sources:
 
+1. A Shapefile of the 2014 permitted agricultural boundaries in Kern, which is published by the county [here](http://www.kernag.com/gis/gis-data.asp).
+2. Raster files of crop-cover classifications from 2007 to 2014 developed by the USDA's National Agricultural Statistics Service.
 
+#### Boundaries
+Kern County kindly publishes permited agricultural boundaries by year. This data is provided as a shapefile. We can read the polygon file in using *maptoos::readShapePoly*; however, the object lacks information about the coordinate systems and projection, two essential aspects for contextualizing spatial data. (This is a great [reference on coordinate systems](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf)). The information is however published on the [Kern County Department Of Agriculture And Measurement Standards](http://www.kernag.com/gis/gis-data.asp). 
 
+The projection is *NAD_1983_StatePlane_California_V_FIPS_0405_Feet*, and to work with it in R we need the the abbreviated : proj4string, which I looked up [here](http://epsg.io/102645). And assigned to the SpatialPolygons object. 
 
-
-
-
-
-
-```{r}
-summary(cars)
+```{r, packages, message=F, warning=F}
+require(raster)
+require(maptools)
 ```
+
+
+```{r, boundaries}
+filename = "/Users/koshlan/Dropbox/KernCounty/kern2014/kern2014.shp"
+kern_boundaries <- maptools::readShapePoly(filename)
+string = "+proj=lcc +lat_1=34.03333333333333 +lat_2=35.46666666666667 +lat_0=33.5 +lon_0=-118 +x_0=2000000 +y_0=500000.0000000002 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192"
+sp::proj4string(kern_boundaries) <- CRS(string)
+```
+
+
+
+
+
