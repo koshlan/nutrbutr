@@ -1,0 +1,39 @@
+---
+title: "SpatialVignettes"
+author: "Koshlan"
+date: "August 17, 2015"
+output: html_document
+---
+
+I am fascinated by spatial data, natural resource use, and the consequences of human activities on environmental quality. I am in the process of writing two packages in R (at this point for personal use) to facilitate analysis of land-cover change. My end goal is the package  **landscapr**, which is meant for general use, however at the moment I working on  **nutrbutr**, a package taylored specifically to my exploration and vizualization of the almond extensification in California.  Both will make use of excellent existing spatial analysis packages in R, namely **sp** and **raster**.  By conducting thid analysis in the context of R package development, I hope to make this research more reproducible. 
+
+### Motivation
+
+California’s Central Valley, one of the most agriculturally productive regions in the world, is undergoing two potentially incompatible transitions: (i) an increase in the amount of land allocated to high-value woody perennial crops (often almonds, pistachios and walnuts) and (ii) a predicted climatic shift towards long-term water shortages and increasing surface temperatures.  In this context, land-conversion to nut orchards have a number of expected negative ecological consequences. Of primary concern is increased rigidity in regional water demand, since recovering investments in nut orchards requires firms to continually irrigate over the entire lifetime of the planted stock.  Constant irrigation in California’s semi-arid climates carries the risk of groundwater depletion, land subsidence, and soil salinification. 
+
+California’s aggregate increase in almond production over the last two decades in response to increased global demand is well known.  However, studies are needed to assess the effects of land-cover conversions on the ecological and economic resilience of the region. For instance: (i) has the region exceeded it’s hydrologic carrying capacity for current and future investments in these crops and (ii) how are those firms investing in nut orchards responding to prolonged surface water deficit?  Currently, the State of California neither regulates nor requires reporting of groundwater withdrawals. Therefore, techniques for remotely estimating agricultural land-use changes and forecast associated groundwater withdrawals could significantly improve regional water supply management.
+
+These are big issue that will require a lot of careful analysis, so to begin with, I'd like to start with a much simpler question that may have gotten lost in the media coverage of the California drought. 
+
+- Where did all the land for almonds and pistachios come from?
+
+- And what has been the *net effect* on irrigation demand of California's nut tree extensification. Obviouslly nut crops require lots of water. but, we should carefully consider the prior land uses (and associated water demand) of those parcels converted to new almond orchards. 
+
+- Have spatial patterns of nut tree expansion been similar in different parts of California
+
+
+### Where to begin?
+
+The most prolific almond producing county in California is Kern County, so we will start there.
+
+
+
+
+
+
+
+
+
+```{r}
+summary(cars)
+```
