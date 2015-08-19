@@ -87,8 +87,7 @@ Here is a toy example that can easily be run.
 
 
 
-
-```{r}
+```{r, eval=FALSE}
 # This block of code extracts the raster pixel values within polygon boundaries
 # First the raster is converted to a lower resolution, then the operation 
 # is broken is called on 100 polygons at a time as to not hog too much memory.

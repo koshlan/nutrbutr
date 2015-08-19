@@ -22,7 +22,6 @@ evaluate_polygon_contents <- function(raster_input,polygon_input, task = mean){
   return(V.task)
 }
 
-
 # Evaluating Polygon Contents in chunks to avoid memory overload
 #' 
 #' @depends raster
