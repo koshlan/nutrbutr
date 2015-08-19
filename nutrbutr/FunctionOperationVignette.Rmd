@@ -7,7 +7,6 @@ output: html_document
 
 ### A simple example of how to use *evaluate_polygon_contents()*
 
-
 Suppose we have a simple raster object and a simple polygon object
 
 We could use use raster::extract directly, but I have found that this can cause memory issue if too many pixels must be evaluated at once. So these wrapper offer an alternative
