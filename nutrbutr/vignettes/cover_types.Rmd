@@ -1,0 +1,18 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r}
+kern_timeseries <- readRDS(system.file("data", 
+                                       "Kern_2014_major_plots_timeseries.rds",
+                                       package = 'nutrbutr')
+                           )
+```
