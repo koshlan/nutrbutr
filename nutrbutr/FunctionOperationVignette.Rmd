@@ -1,0 +1,56 @@
+---
+title: "FunctionOperationVignette"
+author: "Koshlan"
+date: "August 18, 2015"
+output: html_document
+---
+
+### A simple example of how to use *evaluate_polygon_contents()*
+
+
+Suppose we have a simple raster object and a simple polygon object
+
+We could use use raster::extract directly, but I have found that this can cause memory issue if too many pixels must be evaluated at once. So these wrapper offer an alternative
+means to call raster::extract.
+
+```{r}
+require(raster)
+# Load a raster and make it discrete values
+X <- readRDS("Xraster.rds")
+X@data@values <- floor(X@data@values*10) # Make it Discrete Integers
+X2 <- X # Make a copy of the original raster
+res(X2) <- c(5,5) # reduce the resolution, we lose any data values
+X2p <- rasterToPolygons(X2) # make a 5x5 gride
+V <-raster::extract(X, X2p, fun = modal) # Modal value inside each polygon
+values(X2) <- unlist(V)
+par(mfrow = c(1,2))
+plot(X, main= "Original Raster")
+plot(X2, main= "Extracted Modal Value")
+plot(X2p, add= T)
+head(unlist(V))
+```
+
+#### evaluate_polygon_contents()
+For polygons here is a wrapper function specific to *nutrbutr*. It requires that the coordinate system is equivalent for both the polygon and raster file.
+
+```{r}
+require(sp)
+devtools::load_all() # Loads nutrbutr
+sp::proj4string(X) <- CRS("+proj=utm +zone=48 +datum=WGS84")
+sp::proj4string(X2p) <- CRS("+proj=utm +zone=48 +datum=WGS84")
+V <- nutrbutr::evaluate_polygon_contents(raster_input = X, polygon_input=X2p)
+head(V)
+```
+
+#### evaluate_polygon_contents_by_chunks()
+Here is another wrapper, which is useful for evaluating large files with many polygons, so as to avoid putting to so many pixel values into memory. 
+```{r}
+V <- evaluate_polygon_contents_by_chunks(raster_input = X,  polygon_input = X2p, chunk_size =25)
+head(V)
+```
+
+
+
+
+
+
