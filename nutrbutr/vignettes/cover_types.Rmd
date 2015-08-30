@@ -9,10 +9,35 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
 ```{r}
 kern_timeseries <- readRDS(system.file("data", 
                                        "Kern_2014_major_plots_timeseries.rds",
                                        package = 'nutrbutr')
                            )
+names(kern_timeseries)[22:29] <- c("CDL_2014","CDL_2013","CDL_2012",
+                                   "CDL_2011","CDL_2010","CDL_2009",
+                                   "CDL_2008","CDL_2007")
+
+cropscape_color_pallete <- readRDS(system.file("data", 
+                                       "pallete.rds",
+                                       package = 'nutrbutr')
+                                   )
+
+cropscape_color_pallete[kern_timeseries$CDL_2014 + 1]
+par(mfrow = c(1,3))
+plot(kern_timeseries, col = cropscape_color_pallete[kern_timeseries$CDL_2014 + 1], lwd = 0.0001)
+plot(kern_timeseries, col = cropscape_color_pallete[kern_timeseries$CDL_2010 + 1], lwd = 0.0001)
+
+plot(kern_timeseries, col = cropscape_color_pallete[kern_timeseries$CDL_2007 + 1], lwd = 0.0001)
+kern_timeseries@bbox
+
+# NEED A FUNCTION THAT FINDS YEAR OF FIRST OCCURANCE.
+
+
+
+
+
+
+
+
 ```

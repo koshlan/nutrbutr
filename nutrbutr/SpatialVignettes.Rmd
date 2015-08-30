@@ -51,6 +51,7 @@ With a coordinate system in place we can see where all these Kern plots are in C
 ```{r, check_kern_on_CA,} 
 filename = "/Users/koshlan/Dropbox/KernCounty/cb_2013_us_state_20m/cb_2013_us_state_20m.shp"
 states <- readShapePoly(filename, proj4string=CRS("+proj=longlat"))
+
 california <- states[states$STATEFP == "06",] # subset California polygon
 plot(california)
 kern_on_CA = sp::spTransform(kern_boundaries, proj4string(california))
